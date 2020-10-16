@@ -11,10 +11,24 @@
 require 'nokogiri'
 require 'open-uri'
 
+new_user = User.new(
+  email: 'johndoe@example.com', password: 'qwerty',
+  password_confirmation: 'qwerty', locale: 'ru'
+)
+new_user.save
+
+new_block = Block.create(title: 'Recent Dictionary', user: new_user)
+
 doc = Nokogiri::HTML(open('http://www.learnathome.ru/blog/100-beautiful-words'))
 
 doc.search('//table/tbody/tr').each do |row|
-  original = row.search('td[2]/p')[0].content.downcase
-  translated = row.search('td[1]/p')[0].content.downcase
-  Card.create(original_text: original, translated_text: translated, user_id: 17)
+  original = row.search('td[2]')[0].content.downcase
+  translated = row.search('td[4]')[0].content.downcase
+
+  Card.create(
+    original_text: original, translated_text: translated,
+    user: new_user, block: new_block
+  )
+
+  puts "#{original} - #{translated}"
 end
