@@ -35,7 +35,7 @@ describe Dashboard::TrainerController do
                       interval: 1, repeat: 1, efactor: 2.5, quality: 5)
         card = check_review_card(card, 'RoR', 1)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(2.18)
+        expect(card.efactor).to eq(2.18.to_d)
         expect(card.quality).to eq(4)
       end
 
@@ -44,7 +44,7 @@ describe Dashboard::TrainerController do
                       interval: 1, repeat: 1, efactor: 2.5, quality: 5)
         card = check_review_card(card, 'RoR', 2)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(1.5)
+        expect(card.efactor).to eq(1.5.to_d)
         expect(card.quality).to eq(3)
       end
 
@@ -53,7 +53,7 @@ describe Dashboard::TrainerController do
                       interval: 1, repeat: 1, efactor: 2.5, quality: 5)
         card = check_review_card(card, 'RoR', 3)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(1.3)
+        expect(card.efactor).to eq(1.3.to_d)
         expect(card.quality).to eq(3)
       end
 
@@ -72,7 +72,7 @@ describe Dashboard::TrainerController do
         card = create(:card, user: @user, block: @block,
                       interval: 6, repeat: 2, efactor: 2.6, quality: 5)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(2.7)
+        expect(card.efactor).to eq(2.7.to_d)
         expect(card.quality).to eq(5)
       end
 
@@ -81,7 +81,7 @@ describe Dashboard::TrainerController do
                       interval: 6, repeat: 2, efactor: 2.6, quality: 5)
         card = check_review_card(card, 'RoR', 1)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(2.28)
+        expect(card.efactor).to eq(2.28.to_d)
         expect(card.quality).to eq(4)
       end
 
@@ -90,7 +90,7 @@ describe Dashboard::TrainerController do
                       interval: 6, repeat: 2, efactor: 2.6, quality: 5)
         card = check_review_card(card, 'RoR', 2)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(1.6)
+        expect(card.efactor).to eq(1.6.to_d)
         expect(card.quality).to eq(3)
       end
 
@@ -99,7 +99,7 @@ describe Dashboard::TrainerController do
                       interval: 6, repeat: 2, efactor: 2.6, quality: 5)
         card = check_review_card(card, 'RoR', 3)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(1.3)
+        expect(card.efactor).to eq(1.3.to_d)
         expect(card.quality).to eq(3)
       end
 
@@ -118,7 +118,7 @@ describe Dashboard::TrainerController do
         card = create(:card, user: @user, block: @block,
                       interval: 16, repeat: 3, efactor: 2.7, quality: 5)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(2.8)
+        expect(card.efactor).to eq(2.8.to_d)
         expect(card.quality).to eq(5)
       end
 
@@ -127,7 +127,7 @@ describe Dashboard::TrainerController do
                       interval: 16, repeat: 3, efactor: 2.7, quality: 5)
         card = check_review_card(card, 'RoR', 1)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(2.38)
+        expect(card.efactor).to eq(2.38.to_d)
         expect(card.quality).to eq(4)
       end
 
@@ -136,7 +136,7 @@ describe Dashboard::TrainerController do
                       interval: 16, repeat: 3, efactor: 2.7, quality: 5)
         card = check_review_card(card, 'RoR', 2)
         card = check_review_card(card, 'house', 1)
-        expect(card.efactor).to eq(1.7)
+        expect(card.efactor).to eq(1.7.to_d)
         expect(card.quality).to eq(3)
       end
 
@@ -162,7 +162,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(45)
         expect(card.repeat).to eq(4)
         expect(card.attempt).to eq(1)
-        expect(card.efactor).to eq(2.8)
+        expect(card.efactor).to eq(2.8.to_d)
         expect(card.quality).to eq(5)
       end
     end
@@ -181,7 +181,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(1)
         expect(card.repeat).to eq(1)
         expect(card.attempt).to eq(2)
-        expect(card.efactor).to eq(2.18)
+        expect(card.efactor).to eq(2.18.to_d)
         expect(card.quality).to eq(2)
       end
 
@@ -192,7 +192,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(1)
         expect(card.repeat).to eq(1)
         expect(card.attempt).to eq(3)
-        expect(card.efactor).to eq(1.64)
+        expect(card.efactor).to eq(1.64.to_d)
         expect(card.quality).to eq(1)
       end
 
@@ -203,7 +203,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(1)
         expect(card.repeat).to eq(1)
         expect(card.attempt).to eq(4)
-        expect(card.efactor).to eq(1.3)
+        expect(card.efactor).to eq(1.3.to_d)
         expect(card.quality).to eq(0)
       end
     end
@@ -229,7 +229,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(6)
         expect(card.repeat).to eq(2)
         expect(card.attempt).to eq(1)
-        expect(card.efactor).to eq(2.38)
+        expect(card.efactor).to eq(2.38.to_d)
         expect(card.quality).to eq(4)
       end
 
@@ -247,7 +247,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(14)
         expect(card.repeat).to eq(3)
         expect(card.attempt).to eq(1)
-        expect(card.efactor).to eq(2.38)
+        expect(card.efactor).to eq(2.38.to_d)
         expect(card.quality).to eq(5)
       end
 
@@ -261,7 +261,7 @@ describe Dashboard::TrainerController do
         expect(card.interval).to eq(6)
         expect(card.repeat).to eq(2)
         expect(card.attempt).to eq(1)
-        expect(card.efactor).to eq(1.3)
+        expect(card.efactor).to eq(1.3.to_d)
         expect(card.quality).to eq(3)
       end
     end

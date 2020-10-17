@@ -1,10 +1,10 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
-    email 'test@test.com'
-    password '12345'
-    password_confirmation '12345'
-    locale 'ru'
-    current_block_id ''
+    email { 'test@test.com' }
+    password { '12345' }
+    password_confirmation { '12345' }
+    locale { 'ru' }
+    current_block_id { '' }
 
     factory :user_with_one_block_without_cards do
       after(:create) do |user|
