@@ -1,0 +1,10 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
