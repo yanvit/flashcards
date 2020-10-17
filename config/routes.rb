@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root 'main#index'
 
   scope module: 'home' do
-    resources :user_sessions, only: [:new, :create]
-    resources :users, only: [:new, :create]
+    resources :user_sessions, only: %i[new create]
+    resources :users, only: %i[new create]
     get 'login' => 'user_sessions#new', :as => :login
 
     post 'oauth/callback' => 'oauths#callback'

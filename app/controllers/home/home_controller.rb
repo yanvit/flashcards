@@ -1,5 +1,4 @@
 class Home::HomeController < Home::BaseController
-
   def index
     if params[:id]
       @card = current_user.cards.find(params[:id])

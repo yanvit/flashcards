@@ -6,9 +6,9 @@ module TrainerHelper
   end
 
   def check_review_card(card, translate, number)
-    number.times {
+    number.times do
       put :review_card, params: { card_id: card.id, user_translation: translate }
-    }
+    end
     Card.find(card.id)
   end
 end

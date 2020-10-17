@@ -1,5 +1,4 @@
 class Dashboard::TrainerController < Dashboard::BaseController
-
   def index
     if params[:id]
       @card = current_user.cards.find(params[:id])
