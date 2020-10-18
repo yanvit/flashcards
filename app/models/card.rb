@@ -2,7 +2,6 @@ require 'super_memo'
 
 class Card < ActiveRecord::Base
   include ActiveModel::Validations
-  include StringFormatter
 
   belongs_to :user
   belongs_to :block

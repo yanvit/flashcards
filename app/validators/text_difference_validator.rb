@@ -2,9 +2,7 @@ class TextDifferenceValidator < ActiveModel::Validator
   include StringFormatter
 
   def validate(record)
-    if texts_eql?(record)
-      record.errors[:original_text] << 'Вводимые значения должны отличаться.'
-    end
+    record.errors[:original_text] << 'Вводимые значения должны отличаться.' if texts_eql?(record)
   end
 
   private
