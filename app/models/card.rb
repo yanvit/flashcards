@@ -23,21 +23,7 @@ class Card < ActiveRecord::Base
   scope :repeating, -> { where('quality < ?', 4).order('RANDOM()') }
 
   def check_translation(user_translation)
-    distance = Levenshtein.distance(full_downcase(translated_text),
-                                    full_downcase(user_translation))
-
-    sm_hash = SuperMemo.algorithm(interval, repeat, efactor, attempt, distance, 1)
-
-    if distance <= 1
-      sm_hash[:review_date] = Time.zone.now + interval.to_i.days
-      sm_hash[:attempt] = 1
-      update(sm_hash)
-      { state: true, distance: distance }
-    else
-      sm_hash[:attempt] = [attempt + 1, 5].min
-      update(sm_hash)
-      { state: false, distance: distance }
-    end
+    TranslationServices::TranslationChecker.new(self, user_translation).call
   end
 
   protected
