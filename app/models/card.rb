@@ -40,13 +40,6 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def self.pending_cards_notification
-    users = User.where.not(email: nil)
-    users.each do |user|
-      CardsMailer.pending_cards_notification(user.email).deliver if user.cards.pending.any?
-    end
-  end
-
   protected
 
   def set_review_date_as_now
