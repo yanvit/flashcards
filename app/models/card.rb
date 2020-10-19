@@ -18,8 +18,9 @@ class Card < ActiveRecord::Base
 
   mount_uploader :image, CardImageUploader
 
-  scope :pending, -> { where('review_date <= ?', Time.now).order('RANDOM()') }
-  scope :repeating, -> { where('quality < ?', 4).order('RANDOM()') }
+  scope :pending, -> { where('review_date <= ?', Time.now) }
+  scope :repeating, -> { where('quality < ?', 4) }
+  scope :randomly, -> { order('RANDOM()') }
 
   def check_translation(user_translation)
     TranslationServices::TranslationChecker.new(self, user_translation).call
