@@ -44,3 +44,4 @@ en:
           too_short: 'Short value.'
           confirmation: 'Values do not match.'
           taken: 'Not a unique value.'
+          text_difference: 'Entered values should be different'

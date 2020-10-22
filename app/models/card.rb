@@ -22,18 +22,6 @@ class Card < ActiveRecord::Base
   scope :repeating, -> { where('quality < ?', 4) }
   scope :randomly, -> { order('RANDOM()') }
 
-  def check_translation(user_translation)
-    payload = TranslationServices::ProcessTranslation.new(
-      interval: interval, repeat: repeat, efactor: efactor,
-      attempt: attempt, correct_translation: translated_text,
-      provided_translation: user_translation
-    ).call
-
-    update(payload.extract!(:sm_hash)[:sm_hash])
-
-    payload
-  end
-
   protected
 
   def set_review_date_as_now
